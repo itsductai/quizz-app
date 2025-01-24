@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "pUhZ46zkQThR57Y3FGliyoY/YdeDPSTq2q+fFBVV9fE=",
+  "Source": "quizz-api",
+  "BasePath": "_content/quizz-api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
