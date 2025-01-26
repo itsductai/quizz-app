@@ -6,6 +6,7 @@ import { Card, CardContent, Typography } from '@mui/material';
 import Center from './Center';
 import useForm from '../hooks/useForm';
 import { createAPIEndpoint, END_POINT } from '../api/index';
+import { useNavigate } from 'react-router-dom';
 
 // Hàm để khởi tạo giá trị mặc định cho form
 const getFreshModel = () => ({
@@ -23,12 +24,13 @@ export default function Login() {
     handleInputChange // Hàm để xử lý thay đổi giá trị trường nhập
   } = useForm(getFreshModel);
 
+  const navigate = useNavigate();
   // Hàm xử lý khi form được submit
   const login = (e) => {
     e.preventDefault(); // Ngăn không cho form reload trang khi submit
     if (validate()) {   // Kiểm tra xác thực thông tin form
-      createAPIEndpoint(END_POINT.participant)
-      .post(values  )
+      createAPIEndpoint(END_POINT.participant) 
+      .post(values) // gửi JSON cho API
       .then(res => console.log(res))
       .catch(err => console.log(err))
     }
@@ -47,7 +49,7 @@ export default function Login() {
     temp.name = values.name !== "" 
       ? ""   // Nếu tên không trống thì không có lỗi
       : "Name không được bỏ trống."; // Nếu tên trống thì thông báo lỗi
-
+    
     setErrors(temp); // Cập nhật lỗi vào state errors
     return Object.values(temp).every(x => x === ""); // Kiểm tra xem tất cả lỗi có phải là chuỗi rỗng không (tức là không có lỗi)
   };

@@ -6,7 +6,7 @@ export const END_POINT = {
     participant: 'participant'
 };
 
-export const createAPIEndpoint = (endpoint) => {
+export const createAPIEndpoint = (endpoint) => { 
     let url = BASE_URL + 'api/' + endpoint + '/';
     return {
         fetch: () => axios.get(url),
