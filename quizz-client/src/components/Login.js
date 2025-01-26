@@ -5,6 +5,7 @@ import Button from '@mui/material/Button';
 import { Card, CardContent, Typography } from '@mui/material';
 import Center from './Center';
 import useForm from '../hooks/useForm';
+import { createAPIEndpoint, END_POINT } from '../api/index';
 
 // Hàm để khởi tạo giá trị mặc định cho form
 const getFreshModel = () => ({
@@ -26,7 +27,10 @@ export default function Login() {
   const login = (e) => {
     e.preventDefault(); // Ngăn không cho form reload trang khi submit
     if (validate()) {   // Kiểm tra xác thực thông tin form
-      console.log(values); // Nếu xác thực thành công, in ra giá trị các trường
+      createAPIEndpoint(END_POINT.participant)
+      .post(values  )
+      .then(res => console.log(res))
+      .catch(err => console.log(err))
     }
   };
 
