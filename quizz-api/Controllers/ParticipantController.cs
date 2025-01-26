@@ -40,12 +40,12 @@ namespace quizz_api.Controllers
         }
 
         // POST: api/Participant
-        [HttpPost]
         // thêm participant vào database
         // API nhận dữ liệu
         // ASP.NET Core ánh xạ JSON nhờ Model Binding của ASP.NET Core 
         // Framework ASP.NET Core sẽ tự động mapping (ánh xạ) dữ liệu từ JSON truyền vào body request thành object Participant
         // <=> Participant participant = new Participant { Name = "admin", Email = "admin@gmail.com" };
+        [HttpPost]
         public async Task<ActionResult<Participant>> PostParticipant(Participant participant)
         {
             // kiểm tra thông tin của participant đã tồn tại trong database chưa

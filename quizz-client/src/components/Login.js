@@ -6,7 +6,8 @@ import { Card, CardContent, Typography } from '@mui/material';
 import Center from './Center';
 import useForm from '../hooks/useForm';
 import { createAPIEndpoint, END_POINT } from '../api/index';
-import { useNavigate } from 'react-router-dom';
+import { Route, useNavigate } from 'react-router-dom';
+import useStateContext from '../hooks/useStateContext';
 
 // Hàm để khởi tạo giá trị mặc định cho form
 const getFreshModel = () => ({
@@ -15,6 +16,8 @@ const getFreshModel = () => ({
 });
 
 export default function Login() {
+  const {context,setContext} = useStateContext();  // Lấy context và setContext từ stateContext (rỗng khi khởi tạptạp)
+  const navigate = useNavigate(); 
   // Gọi hook useForm bên trong component Login
   const {
     values,           // Các giá trị của form
@@ -24,14 +27,20 @@ export default function Login() {
     handleInputChange // Hàm để xử lý thay đổi giá trị trường nhập
   } = useForm(getFreshModel);
 
-  const navigate = useNavigate();
+  
   // Hàm xử lý khi form được submit
   const login = (e) => {
     e.preventDefault(); // Ngăn không cho form reload trang khi submit
     if (validate()) {   // Kiểm tra xác thực thông tin form
       createAPIEndpoint(END_POINT.participant) 
       .post(values) // gửi JSON cho API
-      .then(res => console.log(res))
+      .then(res => 
+        {      
+          setContext({participantID : res.data.participantID}) // Lưu thông tin người dùng vào Context
+          console.log(context)
+          navigate('/quiz'); // Chuyển hướng tới trang Quiz
+        }
+      )
       .catch(err => console.log(err))
     }
   };

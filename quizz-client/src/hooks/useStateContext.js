@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { useContext } from 'react';
 import { useState } from 'react';
 import { createContext } from 'react'
 
 // Tao Context
-export const UserContext = createContext();
+export const stateContext = createContext();
 
 // Tao Context khoi tao ban dau
 const getFreshContext = ()=>{
@@ -12,6 +12,14 @@ const getFreshContext = ()=>{
         timeTaken:0,
         selectedOptions:[]
     }
+}
+
+export default function useStateContext(){
+    const {context, setContext} = useContext(stateContext)
+    return { 
+        context, 
+        setContext: obj => {setContext ({...context, ...obj})}
+    };
 }
 
 //Tao context provider bao boc ung dung

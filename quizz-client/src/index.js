@@ -6,6 +6,7 @@ import reportWebVitals from './reportWebVitals';
 // import { ThemeProvider } from '@emotion/react';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { CssBaseline } from '@mui/material';
+import { ContextProvider } from './hooks/useStateContext';
 
 
 const darkTheme = createTheme({
@@ -17,10 +18,12 @@ const darkTheme = createTheme({
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <ThemeProvider theme={darkTheme}>
-    <CssBaseline />
-      <React.StrictMode>
-      <App />
-    </React.StrictMode>
+    <ContextProvider>
+      <CssBaseline />
+        <React.StrictMode>
+        <App />
+      </React.StrictMode>
+    </ContextProvider>
   </ThemeProvider>
 );
 
