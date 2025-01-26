@@ -17,14 +17,14 @@ const darkTheme = createTheme({
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
+  <ContextProvider>
   <ThemeProvider theme={darkTheme}>
-    <ContextProvider>
       <CssBaseline />
         <React.StrictMode>
         <App />
       </React.StrictMode>
-    </ContextProvider>
   </ThemeProvider>
+  </ContextProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function

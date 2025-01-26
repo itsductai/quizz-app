@@ -9,7 +9,7 @@ export default function Quiz() {
     //     ...context,
     //     timeTaken:1
     // })
-    console.log()
+    console.log(context)
   return (
     <div>Quiz</div>
   )

@@ -48,20 +48,23 @@ namespace quizz_api.Controllers
         [HttpPost]
         public async Task<ActionResult<Participant>> PostParticipant(Participant participant)
         {
-            // kiểm tra thông tin của participant đã tồn tại trong database chưa
-            var temp = _context.Participants.Where( x=> x.Name == participant.Name && x.Email == participant.Email).FirstOrDefault();
-            
-           if (temp == null)
+            // Kiểm tra xem có participant nào đã tồn tại với cùng email và name không
+            var temp = await _context.Participants
+                                      .Where(x => x.Name == participant.Name && x.Email == participant.Email)
+                                      .FirstOrDefaultAsync();
+
+            if (temp == null)
             {
-                // nếu chưa tồn tại thì thêm vào database
+                // Nếu chưa có, thêm mới vào cơ sở dữ liệu
                 _context.Participants.Add(participant);
                 await _context.SaveChangesAsync();
+                return Ok(participant); // Trả về đối tượng participant mới được thêm vào
             }
-           else
-                // nếu đã tồn tại thì trả về thông tin của participant
-                participant = temp;
-            // trả về thông tin của participant cho FE
-            return Ok(participant);
+            else
+            {
+                // Nếu đã có, trả về thông tin participant đã tồn tại
+                return Ok(temp); // Trả về đối tượng participant đã tồn tại
+            }
         }
 
         // PUT: api/Participant/5
