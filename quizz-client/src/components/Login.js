@@ -39,7 +39,7 @@ export default function Login() {
           console.log(res)  
           setContext({pid : res.data.pid}) // Lưu thông tin người dùng vào Context
           console.log(context)
-          //navigate('/quiz'); // Chuyển hướng tới trang Quiz
+          navigate('/quiz'); // Chuyển hướng tới trang Quiz
         }
       )
       .catch(err => console.log(err))
@@ -65,14 +65,14 @@ export default function Login() {
   };
 
   return (
-    <Center /* Component Center để căn giữa nội dung */>  <p>{context.pid}</p>  
+    <Center /* Component Center để căn giữa nội dung */>  
       <Card>  
         <CardContent sx={{ textAlign: 'center' }}> 
           <Typography variant='h3' sx={{ my: 3 }}>Quiz App</Typography> 
           <Box
             component="form"
             sx={{ '& .MuiTextField-root': { m: 1, width: '90%' } }} 
-            autoComplete="off"   /* Tắt tự động hoàn thành form */
+            // autoComplete="off"   /* Tắt tự động hoàn thành form */
             onSubmit={login}      /* Gọi hàm login khi form được submit */
           >
             <TextField
