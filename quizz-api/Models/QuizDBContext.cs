@@ -11,5 +11,6 @@ namespace quizz_api.Models
 
         public DbSet<Question> Questions { get; set; }
         public DbSet<Participant> Participants { get; set; }
+        public IEnumerable<object> Question { get; internal set; }
     }
 }
