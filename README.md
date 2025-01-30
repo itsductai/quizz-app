@@ -1,104 +1,79 @@
-# Online Course Management System  
-*(Hệ thống Quản lý Khóa học Trực tuyến)* 
+# Quizz App 🎮
 
-**The Online Course Management System** is a web-based platform designed to enhance the experience of online learning and teaching. This system provides a comprehensive solution for managing courses, users, and real-time communication between instructors and learners. 
-*(Hệ thống Quản lý Khóa học Trực tuyến là một nền tảng dựa trên web được thiết kế nhằm nâng cao trải nghiệm học và giảng dạy trực tuyến. Hệ thống này cung cấp một giải pháp toàn diện để quản lý các khóa học, người dùng, và giao tiếp thời gian thực giữa giảng viên và học viên.)* 
+## Mô tả dự án 📝
+Quizz App là một ứng dụng web được phát triển nhằm cung cấp nền tảng tạo và làm bài kiểm tra trực tuyến. Dự án sử dụng công nghệ **ReactJS** cho phần giao diện người dùng (frontend) và **ASP.NET Core Web API** cho phần backend.
 
+Ứng dụng cho phép người dùng:
+- 🚀 Đăng ký tài khoản và đăng nhập.
+- 📚 Tham gia làm các bài kiểm tra (quizz) với giao diện thân thiện, trực quan.
+- 🛠️ Tạo, quản lý, và chia sẻ các bài kiểm tra.
+- 📊 Xem kết quả và thống kê sau khi hoàn thành bài kiểm tra.
 
----
+## Công nghệ sử dụng 💻
 
-## 🌟 Key Features / Tính Năng Chính:  
+### Frontend 🌐
+- **ReactJS**: Xây dựng giao diện người dùng tương tác, linh hoạt.
+- **Axios**: Kết nối với API để lấy dữ liệu và gửi yêu cầu.
+- **Material-UI (MUI)**: Thư viện UI component mạnh mẽ giúp tùy chỉnh giao diện và đảm bảo thiết kế responsive.
 
-### 🔒 User Management / Quản Lý Người Dùng:  
-- **Students (Học viên):**  
-  - Register and log in using **JWT authentication** or **Google OAuth**.  
-    *(Đăng ký và đăng nhập bằng **JWT** hoặc **Google OAuth**.)*  
-  - Manage personal profiles: update name, email, password, and avatar.  
-    *(Quản lý hồ sơ cá nhân: cập nhật tên, email, mật khẩu, và ảnh đại diện.)*  
+### Backend 🔙
+- **ASP.NET Core Web API**: Cung cấp các API RESTful để quản lý dữ liệu người dùng, bài kiểm tra và kết quả.
+- **Entity Framework Core**: Quản lý cơ sở dữ liệu.
+- **SQL Server**: Hệ quản trị cơ sở dữ liệu được sử dụng.
 
-- **Instructors (Giảng viên):**  
-  - Monitor students' progress and manage course enrollments.  
-    *(Theo dõi tiến độ học tập của học viên và quản lý việc ghi danh các khóa học.)*  
+### Kiến trúc dự án 🏗️
+- **Frontend**: Được lưu trữ tại `quizz-client` (thư mục chính).
+- **Backend**: Được lưu trữ tại `quizz-api` (thư mục chính).
 
-### 📚 Course Management / Quản Lý Khóa Học:  
-- **Instructors (Giảng viên):**  
-  - Create, edit, and delete courses.  
-    *(Tạo, chỉnh sửa và xóa các khóa học.)*  
-  - Add lectures, upload materials, and track students' participation.  
-    *(Thêm bài giảng, tải tài liệu, và theo dõi sự tham gia của học viên.)*  
-- **Students (Học viên):**  
-  - Enroll in free or paid courses and access learning materials.  
-    *(Đăng ký khóa học miễn phí hoặc có phí và truy cập tài liệu học tập.)*  
+## Các tính năng chính 🎯
+1. **Quản lý người dùng** 👤:
+   - Đăng ký, đăng nhập và quản lý tài khoản.
+   - Bảo mật thông tin người dùng với mã hóa mật khẩu.
 
-### 💳 Payment Integration / Tích Hợp Thanh Toán:  
-- Secure online payment through **VNPay** or **Momo** for premium courses.  
-  *(Thanh toán trực tuyến an toàn qua **VNPay** hoặc **Momo** cho các khóa học cao cấp.)*  
+2. **Tạo và quản lý bài kiểm tra** 📝:
+   - Giao diện dễ sử dụng để tạo câu hỏi, thiết lập thời gian, và phân loại câu hỏi.
+   - Lưu trữ bài kiểm tra trên cơ sở dữ liệu.
 
-### 📝 Knowledge Sharing / Chia Sẻ Kiến Thức:  
-- Blogging feature where users can write and share articles.  
-  *(Chức năng blog cho phép người dùng viết và chia sẻ bài viết.)*  
-- Enable comments and feedback for better interaction.  
-  *(Cho phép bình luận và phản hồi để tăng tính tương tác.)*  
+3. **Làm bài kiểm tra** ⏳:
+   - Giao diện trả lời câu hỏi theo thời gian thực.
+   - Hiển thị thời gian còn lại và số câu hỏi đã hoàn thành.
 
-### 💬 Real-time Communication / Giao Tiếp Thời Gian Thực:  
-- Integrated chat system (via **SignalR**) for direct interaction between students and instructors.  
-  *(Tích hợp hệ thống chat (qua **SignalR**) để giao tiếp trực tiếp giữa học viên và giảng viên.)*  
-- Community chat room for group discussions and collaboration.  
-  *(Phòng chat cộng đồng để thảo luận nhóm và hợp tác.)*  
+4. **Xem kết quả và thống kê** 📈:
+   - Hiển thị điểm số ngay sau khi hoàn thành bài kiểm tra.
+   - Thống kê chi tiết các câu trả lời đúng/sai.
 
-### 📊 Statistics and Reporting / Thống Kê và Báo Cáo:  
-- Instructors can view detailed revenue statistics with visualized charts.  
-  *(Giảng viên có thể xem thống kê doanh thu chi tiết qua biểu đồ trực quan.)*  
+## Cài đặt và chạy dự án ⚙️
+### Yêu cầu hệ thống 📋
+- **Node.js** >= 14.x
+- **.NET SDK** >= 6.0
+- **SQL Server** (cài đặt local hoặc trên cloud)
 
----
+### Hướng dẫn cài đặt 📥
 
-## 🛠️ Technologies / Công Nghệ Sử Dụng:  
+1. **Clone repository** 🖥️:
+   Mở terminal và chạy lệnh sau để clone dự án:
+   ```bash
+   git clone https://github.com/itsductai/quizz-app.git
+   cd quizz-app
+2. **Cài đặt và chạy frontend** 🌐:
+Di chuyển vào thư mục client và cài đặt các phụ thuộc:
+   ```
+   cd quizz-client
+   npm install
+   npm start
+   ```
+Sau khi frontend đã được cài đặt thành công, ứng dụng sẽ chạy tại http://localhost:3000.
+   
+3. **Cài đặt và chạy backend** 🔙: 
+  Cấu hình chuỗi kết nối trong file appsettings.json tại thư mục server.
+  Di chuyển vào thư mục server và chạy các lệnh sau để cài đặt và chạy backend:
+    ```
+    cd quizz-api
+    dotnet restore
+    dotnet run
+    ```
+  Backend API sẽ hoạt động tại: http://localhost:5000.
 
-### Frontend:
-- **ReactJS**: Build dynamic and interactive interfaces. *(Xây dựng giao diện động và tương tác.)*  
-- **HTML**, **CSS**, **Bootstrap**: Design responsive layouts. *(Thiết kế giao diện phản hồi tốt.)*  
-
-### Backend:  
-- **ASP.NET Core**: Develop robust APIs. *(Phát triển API mạnh mẽ.)*  
-- **Entity Framework Core**: Handle database operations. *(Xử lý thao tác với cơ sở dữ liệu.)*  
-
-### Authentication:  
-- **JWT** (JSON Web Token): For secure user authentication. *(Xác thực người dùng an toàn.)*  
-- **Google OAuth**: Simplified login process. *(Đăng nhập đơn giản hóa.)*  
-
-### Real-time Features:  
-- **SignalR**: For instant messaging and chat features. *(Hỗ trợ tính năng nhắn tin và chat thời gian thực.)*  
-
-### Database:  
-- **SQL Server**: Store and manage data securely. *(Lưu trữ và quản lý dữ liệu an toàn.)*  
-
-### Payment Gateway:  
-- **VNPay** or **Momo**: Process online payments. *(Xử lý thanh toán trực tuyến.)*  
-
-### Testing and Deployment:  
-- **Postman**: API testing tool. *(Công cụ kiểm thử API.)*  
-- **Azure** or **Docker**: Deploy and host the application. *(Triển khai và lưu trữ ứng dụng.)*  
-
----
-
-## 🚀 Purpose / Mục Đích:  
-This system combines functionality, interaction, and scalability, aiming to revolutionize online education. It fosters a collaborative and engaging learning environment.  
-
-*(Hệ thống này kết hợp chức năng, tương tác và khả năng mở rộng, hướng đến việc cách mạng hóa giáo dục trực tuyến. Nó thúc đẩy một môi trường học tập hợp tác và hấp dẫn.)*
-
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
+4. **Khởi chạy ứng dụng** 🚀
+  Giao diện người dùng: Truy cập tại http://localhost:3000.
+  Backend API: Truy cập tại http://localhost:5000.
